@@ -1183,11 +1183,10 @@ article .content .caption {
   background-position: bottom;
   background-size: 100% 6px;
   background-repeat: repeat-x;
+  color: #2bbc8a !important;
 }
 .article-tag .tag-link:before {
   content: "#";
-  color: #2bbc8a;
-  background-color: #2bbc8a;
 }
 .article-category .category-link {
   background-image: linear-gradient(transparent, transparent 10px, #d480aa 10px, #d480aa);
