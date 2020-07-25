@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="模板字面量  ES6新增字符串创建方法，可以说是增强版的字符串，使用反引号(&#96;)标识12let str &#x3D; &#96;you are a pig&#96;;console.log(str); -&gt; &quot;you are a&quot; 与普通字符串的真正区别在于模板字面量的变量占位符。变量占位符允许将任何有效的JS表达式嵌入到模板字面量中，并将其结果输出为字符串的一部分123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS值类型的使用">
+<meta property="og:url" content="http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Joker">
+<meta property="og:description" content="模板字面量  ES6新增字符串创建方法，可以说是增强版的字符串，使用反引号(&#96;)标识12let str &#x3D; &#96;you are a pig&#96;;console.log(str); -&gt; &quot;you are a&quot; 与普通字符串的真正区别在于模板字面量的变量占位符。变量占位符允许将任何有效的JS表达式嵌入到模板字面量中，并将其结果输出为字符串的一部分123">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-24T07:47:39.783Z">
+<meta property="article:modified_time" content="2020-07-24T13:06:16.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JS值类型的使用</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/07/24/7.24/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&text=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&is_video=false&description=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS值类型的使用&body=Check out this article: http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&name=JS值类型的使用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&t=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板字面量"><span class="toc-number">1.</span> <span class="toc-text">模板字面量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串的基本函数"><span class="toc-number">2.</span> <span class="toc-text">字符串的基本函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转换"><span class="toc-number">3.</span> <span class="toc-text">类型转换</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JS值类型的使用
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Joker</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-07-24T07:47:39.783Z" itemprop="datePublished">2020-07-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="模板字面量"><a href="#模板字面量" class="headerlink" title="模板字面量"></a>模板字面量</h2><hr>
+<ul>
+<li>ES6新增字符串创建方法，可以说是增强版的字符串，使用反引号(`)标识<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str &#x3D; &#96;you are a pig&#96;;</span><br><span class="line">console.log(str); -&gt; &quot;you are a&quot;</span><br></pre></td></tr></table></figure></li>
+<li>与普通字符串的真正区别在于模板字面量的变量占位符。变量占位符允许将任何有效的JS表达式嵌入到模板字面量中，并将其结果输出为字符串的一部分<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;变量占位符由起始的 $&#123; 与结束的 &#125; 来定界</span><br><span class="line">let name &#x3D; &quot;kangkang&quot;;</span><br><span class="line">let work &#x3D; &quot;student&quot;;</span><br><span class="line">console.log(name+ &quot; is a &quot; +work); -&gt; kangkang is a student</span><br><span class="line">console.log(&#96;$&#123;name&#125; is a $&#123;work&#125;&#96;); -&gt; kangkang is a student</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">function show() &#123;</span><br><span class="line">    return &quot;kangkang&quot;;</span><br><span class="line">&#125;</span><br><span class="line">console.log(&#96;$&#123;show()&#125; is a student&#96;); -&gt; kangkang is a student</span><br></pre></td></tr></table></figure></li>
+<li>标签模板（没学，以后再说）</li>
+</ul>
+<h2 id="字符串的基本函数"><a href="#字符串的基本函数" class="headerlink" title="字符串的基本函数"></a>字符串的基本函数</h2><hr>
+<ul>
+<li><p>去除字符串前后空白</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;str.trim();</span><br><span class="line">const str &#x3D; &quot;      kangkang is a pig   &quot;;</span><br><span class="line">console.log(str.length); -&gt; 26</span><br><span class="line">console.log(str.trim().length); -&gt; 17</span><br></pre></td></tr></table></figure></li>
+<li><p>字符串的分割、检索、截取和替换</p>
+<p>&nbsp;分割</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;str.split();</span><br><span class="line">const str &#x3D; &quot;iteawithmilk&quot;;</span><br><span class="line">console.log(str.split(&quot;&quot;)); -&gt; [&quot;i&quot;, &quot;t&quot;, &quot;e&quot;, &quot;a&quot;, &quot;w&quot;, &quot;i&quot;, &quot;t&quot;, &quot;h&quot;, &quot;m&quot;, &quot;i&quot;, &quot;l&quot;, &quot;k&quot;]</span><br><span class="line">console.log(str.split(&quot;&quot;,4)); 0-&gt; [&quot;i&quot;, &quot;t&quot;, &quot;e&quot;, &quot;a&quot;] &#x2F;&#x2F;第二个参数指定数组长度</span><br><span class="line">console.log(str.split(&quot;i&quot;)); -&gt; [&quot;&quot;, &quot;teaw&quot;, &quot;thm&quot;, &quot;lk&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;检索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const str &#x3D; &quot;iteawithmilk&quot;;</span><br><span class="line">&#x2F;&#x2F;返回下标对应的字母</span><br><span class="line">console.log(str.charAt(&quot;4&quot;)); -&gt; w</span><br><span class="line">console.log(str[4]); -&gt; w</span><br><span class="line">&#x2F;&#x2F;第几个开始往后查找，遇到就停下返回</span><br><span class="line">console.log(str.indexOf(&quot;i&quot;,2)); -&gt; 5</span><br><span class="line">&#x2F;&#x2F;第几个开始往前查找，遇到就停下返回</span><br><span class="line">console.log(str.lastIndexOf(&quot;i&quot;,9)); -&gt;0</span><br><span class="line">&#x2F;&#x2F;找不到的情况下返回-1</span><br><span class="line">console.log(str.indexOf(&quot;p&quot;)); -&gt; -1</span><br><span class="line">&#x2F;&#x2F;找不到的情况下返回false</span><br><span class="line">console.log(str.includes(&quot;p&quot;)); -&gt; false</span><br><span class="line">&#x2F;&#x2F;判断首尾巴字母</span><br><span class="line">console.log(str.startsWith(&quot;i&quot;)); -&gt; ture</span><br><span class="line">console.log(str.endsWith(&quot;k&quot;)); -&gt; ture</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;截取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;slice substr substring</span><br><span class="line">const str &#x3D; &quot;iteawithmilk&quot;;</span><br><span class="line">&#x2F;&#x2F;一个参数时，三个没有区别,返回从第几个开始（包括开始那个）到后面的字符串</span><br><span class="line">console.log(str.slice(4)); -&gt; withmilk</span><br><span class="line">console.log(str.substr(4)); -&gt; withmilk</span><br><span class="line">console.log(str.substring(4)); -&gt; withmilk</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">console.log(str.slice(1,4)); -&gt; tea</span><br><span class="line">console.log(str.substring(1,4)); -&gt; tea &#x2F;&#x2F;两个都是截取第1个到第4个，左闭右开</span><br><span class="line">console.log(str.substr(1,4)); -&gt; teaw &#x2F;&#x2F;substr()是从第1个开始截取4个长度的字符</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">console.log(str.slice(-4)); -&gt; milk </span><br><span class="line">console.log(str.slice(-11,-8)); -&gt; tea &#x2F;&#x2F;两个负参数与字符串长度相加</span><br><span class="line">console.log(str.substr(-4,3)); -&gt;mil</span><br><span class="line">console.log(str.substr(-4,-9)); -&gt; &quot;&quot; &#x2F;&#x2F;第一个负参数与字符串产长度相加，第二个转换为0</span><br><span class="line">console.log(str.substring(-3)); -&gt; iteawithmilk</span><br><span class="line">console.log(str.substring(-1,-4)); -&gt; &quot;&quot; &#x2F;&#x2F;只要是负参数都转换成0</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const str &#x3D; &quot;iteawithmilk&quot;;</span><br><span class="line">console.log(str.replace(&quot;milk&quot;,&quot;coffe&quot;)); -&gt; iteawithcoffe</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><hr>
+<ul>
+<li><p>Boolean类型显示转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let number &#x3D; 11;</span><br><span class="line">number &#x3D; !!number;</span><br><span class="line">console.log(number); -&gt; true</span><br><span class="line">console.log(Boolean(number)); -&gt; true</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">let str &#x3D; &quot;iteawithmilk&quot;;</span><br><span class="line">console.log(!!str); -&gt; true</span><br><span class="line">console.log(Boolean(str)); -&gt; true</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">let arr &#x3D; [];</span><br><span class="line">console.log(!![]); -&gt; true</span><br><span class="line">console.log(Boolean([])); -&gt; true</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">let object &#x3D; &#123;&#125;;</span><br><span class="line">console.log(!!&#123;&#125;); -&gt; true</span><br><span class="line">console.log(Boolean(object)); -&gt; true</span><br></pre></td></tr></table></figure>
+
+<p>*数值类型转换和NaN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(&quot;iteawithmilk&quot;)); -&gt; NaN</span><br><span class="line">console.log(2&#x2F;&quot;iteawithmilk&quot;); -&gt; NaN</span><br><span class="line">console.log(NaN &#x3D;&#x3D; NaN); -&gt; false &#x2F;&#x2F; NaN不能</span><br><span class="line">console.log(Number.isNaN(2&#x2F;&quot;iteawithmilk&quot;)); -&gt; true</span><br><span class="line">console.log(Object.is(2&#x2F;&quot;iteawithmilk&quot;,NaN)); -&gt; true</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板字面量"><span class="toc-number">1.</span> <span class="toc-text">模板字面量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串的基本函数"><span class="toc-number">2.</span> <span class="toc-text">字符串的基本函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转换"><span class="toc-number">3.</span> <span class="toc-text">类型转换</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&text=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&is_video=false&description=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS值类型的使用&body=Check out this article: http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&title=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&name=JS值类型的使用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/07/24/JS%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/&t=JS值类型的使用" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
